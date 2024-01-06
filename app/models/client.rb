@@ -7,4 +7,6 @@ class Client < ApplicationRecord
   validates :sex, presence: true, length: { is: 1 }, inclusion: { in: %w[m f] }
   validates :age, presence: true, numericality: { greater_than: 0}
   validates :city, associated: true
+
+  scope :find_by_name, -> (name) { where(name: name) }
 end
