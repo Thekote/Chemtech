@@ -16,9 +16,9 @@ RSpec.describe City, type: :model do
   describe 'scopes' do
     describe '.find_by_state' do
       it 'finds records with the same state' do
-        city =  City.create!(name: "City Z", state: "ZA")
+        city =  City.create!(name: "City X", state: "XA")
   
-        found_by_state = City.find_by_state("ZA")
+        found_by_state = City.find_by_state("XA")
         
         expect(found_by_state.first).to eq(city)
       end
