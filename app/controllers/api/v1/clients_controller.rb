@@ -29,7 +29,7 @@ class Api::V1::ClientsController < Api::BaseController
     @client = Client.find(params[:id])
 
     return render json: @client.errors, status: :not_found unless @client.destroy!
-    render json: @client, status: :success
+    render json: @client, status: :no_content
   end
 
   def find_name
