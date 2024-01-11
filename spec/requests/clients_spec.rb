@@ -49,12 +49,12 @@ RSpec.describe 'api/v1/clients', type: :request do
     context 'with valid parameters' do
       it 'it creates a new client' do
        expect do
-         post api_v1_clients_path, params: { client: valid_attributes }
+         post  api_v1_client_create_path, params: { client: valid_attributes }
        end.to change(Client, :count).by(1)
       end
 
       it 'renders a successful response' do
-        post api_v1_clients_path, params: { client: valid_attributes }
+        post  api_v1_client_create_path, params: { client: valid_attributes }
 
         expect(response).to be_successful
         expect(response).to have_http_status(:created)
@@ -64,12 +64,12 @@ RSpec.describe 'api/v1/clients', type: :request do
     context 'with invalid parameters' do
       it 'does not creates a new client' do
         expect do
-          post api_v1_clients_path, params: { client: invalid_attributes }
+          post  api_v1_client_create_path, params: { client: invalid_attributes }
         end.to change(Client, :count).by(0)
       end
 
       it 'renders a unsuccessful response' do
-        post api_v1_clients_path, params: { client: invalid_attributes }
+        post  api_v1_client_create_path, params: { client: invalid_attributes }
 
         expect(response).to_not be_successful
         expect(response).to have_http_status(:unprocessable_entity)
@@ -77,7 +77,7 @@ RSpec.describe 'api/v1/clients', type: :request do
     end
   end
 
-  describe 'PUT update' do
+  describe 'PATCH update' do
       let(:new_attibutes) do
         {
           name: "Pedro Ganso"
@@ -87,7 +87,7 @@ RSpec.describe 'api/v1/clients', type: :request do
       it 'updates the client' do
         client = Client.create! valid_attributes
 
-        put "/api/v1/client/#{client.id}", params: { client: new_attibutes}
+        patch "/api/v1/client/#{client.id}", params: { client: new_attibutes}
         client.reload
 
         expect(client.name).to eq("Pedro Ganso")
@@ -103,12 +103,12 @@ RSpec.describe 'api/v1/clients', type: :request do
     end
   end
 
-  describe 'GET find_name' do
+  describe 'POST find_name' do
     it 'it renders a successful response' do
       client = Client.create! valid_attributes
       body = { name: "Client1" }
 
-      get api_v1_client_name_path, params: body, as: :json
+      post api_v1_client_name_path, params: body, as: :json
 
       expect(response).to be_successful
       expect(response).to have_http_status(:ok)

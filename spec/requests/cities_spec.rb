@@ -39,12 +39,12 @@ RSpec.describe 'api/v1/cities', type: :request do
     context 'with valid parameters' do
       it 'it creates a new city' do
        expect do
-         post api_v1_cities_path, params: { city: valid_attributes }
+         post api_v1_city_create_path, params: { city: valid_attributes }
        end.to change(City, :count).by(1)
       end
 
       it 'renders a successful response' do
-        post api_v1_cities_path, params: { city: valid_attributes }
+        post api_v1_city_create_path, params: { city: valid_attributes }
 
         expect(response).to be_successful
         expect(response).to have_http_status(:created)
@@ -54,12 +54,12 @@ RSpec.describe 'api/v1/cities', type: :request do
     context 'with invalid parameters' do
       it 'does not creates a new city' do
         expect do
-          post api_v1_cities_path, params: { city: invalid_attributes }
+          post api_v1_city_create_path, params: { city: invalid_attributes }
         end.to change(City, :count).by(0)
       end
 
       it 'renders a unsuccessful response' do
-        post api_v1_cities_path, params: { city: invalid_attributes }
+        post api_v1_city_create_path, params: { city: invalid_attributes }
 
         expect(response).to_not be_successful
         expect(response).to have_http_status(:unprocessable_entity)

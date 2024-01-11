@@ -10,6 +10,6 @@ RSpec.describe Api::V1::CitiesController, type: :routing do
 
     it { should route(:get, 'api/v1/city/state').to(action: :find_state) }
 
-    it { should route(:post, 'api/v1/cities').to(action: :create) }    
+    it { should route(:post, 'api/v1/city/create').to(action: :create) }    
   end
 end
