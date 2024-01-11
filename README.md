@@ -31,8 +31,8 @@ Open Postman or any other way to send requests to try the endpoints.
 
 
 API Routes:
-  City:
   ```
+  City:
 GET http://localhost:3000/api/v1/cities -> find all
 GET http://localhost:3000/api/v1/cities/:id -> find id
 GET http://localhost:3000/api/v1/city/name -> find city name
@@ -40,8 +40,8 @@ GET http://localhost:3000/api/v1/city/state -> find city state
 POST http://localhost:3000/api/v1/city/create -> create city
   ```
 
- Client:
  ```
+ Client:
 GET http://localhost:3000/api/v1/clients -> find all
 GET http://localhost:3000/api/v1/clients/:id -> find id
 POST http://localhost:3000/api/v1/client/name -> find client name
